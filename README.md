@@ -90,8 +90,8 @@ Follow these easy steps to run it locally:
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/financial-chatbot.git
-cd financial-chatbot
+git clone https://github.com/jabran-adeel/Financial-Chatbot.git
+cd Financial-Chatbot
 ```
 
 ## 2️⃣ Create a virtual environment
