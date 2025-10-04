@@ -1,0 +1,63 @@
+Financial Chatbot – Project Documentation
+
+Overview
+This project is an AI-powered financial chatbot built using Flask (Python) as part of the Boston Consulting Group (BCG) GenAI Job Simulation (The Forage).
+The chatbot provides quick and interactive financial insights for Microsoft, Apple, and Tesla based on real data (2022–2024).
+
+It demonstrates how structured financial data can be transformed into interactive, conversational insights through rule-based AI logic.
+
+How It Works
+1. The chatbot loads financial data from financial_data_2022_2024.csv using pandas (via data_loader.py).
+2. When the user enters a query in the chatbox:
+   - The Flask backend (app.py) receives the message.
+   - The chatbot checks for company names and keywords in the message.
+   - It retrieves the relevant data from the dataset (e.g., revenue, net income, cash flow).
+3. The chatbot then sends a text-based response back to the frontend (index.html), which is displayed in the chat interface.
+
+Internally, it uses simple rule-based natural language logic:
+- If the message contains “revenue” → show revenue for the latest year.
+- If it contains “net income” or “profit” → show net income.
+- If it contains “assets” or “liabilities” → show balance sheet items.
+- If it contains “cash” or “cash flow” → show cash flow data.
+- If it contains “growth” or “change” → calculate year-over-year revenue change.
+
+All this happens dynamically in real time through Flask’s /api/chat endpoint.
+
+Predefined Queries It Can Respond To
+The chatbot understands queries such as:
+- “What is Microsoft’s revenue in 2024?” → Shows total revenue
+- “Apple’s net income in 2023” → Displays net income
+- “Tesla assets and liabilities 2024” → Displays both assets and liabilities
+- “How did Microsoft’s revenue change last year?” → Shows growth percentage
+- “Apple cash flow” → Displays operating cash flow
+
+Key Components
+- app.py → Main Flask app and chatbot logic
+- data_loader.py → Loads and filters financial data
+- financial_data_2022_2024.csv → Financial dataset (Microsoft, Apple, Tesla)
+- templates/index.html → Chat interface (frontend)
+- static/styles.css → Styling for chatbot UI
+- Procfile → Deployment configuration for Heroku
+- requirements.txt → Dependencies for the project
+
+Limitations
+- The chatbot currently uses rule-based logic only — it doesn’t use NLP models or machine learning.
+- It only supports three companies: Microsoft, Apple, and Tesla.
+- Queries must contain a recognized keyword (e.g., “revenue”, “income”, “assets”).
+- It doesn’t handle vague or conversational queries like “Tell me about Microsoft’s performance” yet.
+- The dataset is static (2022–2024) — not connected to live financial data.
+
+Future Improvements
+- Integrate with OpenAI / Gemini APIs for natural-language understanding.
+- Add visual charts for financial metrics using matplotlib or Plotly.
+- Connect to real-time APIs for live stock and financial updates.
+- Expand dataset coverage to include more companies and KPIs.
+
+Author
+Jabran Adeel
+AI/ML Engineer • Data Scientist • Generative AI Developer
+GitHub: https://github.com/jabran-adeel
+LinkedIn: https://www.linkedin.com/in/jabran-adeel
+
+Summary:
+This chatbot demonstrates how AI and financial analytics can be combined to make complex financial data easily understandable through conversational interfaces.
