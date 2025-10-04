@@ -30,6 +30,22 @@ Easily upgradeable to include Large Language Model (LLM) APIs like OpenAI or Gem
 
 ---
 
+## 🖼️ Screenshots (Live Demo Preview)
+
+### 🏠 Home Page  
+![Home Page](screenshots/Screenshot_1.png)
+
+### 💬 Chat Interface  
+![Chat Interface](screenshots/Screenshot_2.png)
+
+### 📊 Financial Insight Example  
+![Financial Insight Example](screenshots/Screenshot_3.png)
+
+### ✅ Working Demo  
+![Working Demo](screenshots/Screenshot_4.png)
+
+---
+
 ## 🧠 Project Overview
 
 This chatbot demonstrates how AI and finance can combine to simplify complex data into human-like conversations.  
