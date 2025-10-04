@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Financial Chatbot — Demo</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Financial Chatbot (Demo)</h1>
+    <div id="chat">
+      <div class="bot-message">Hello! Ask about Microsoft, Apple, or Tesla (2022–2024).</div>
+    </div>
+
+    <form id="msg-form">
+      <input id="msg-input" placeholder="e.g., What is Microsoft revenue 2024?" autocomplete="off"/>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+<script>
+const form = document.getElementById('msg-form');
+const input = document.getElementById('msg-input');
+const chat = document.getElementById('chat');
+
+function addMessage(text, cls) {
+  const el = document.createElement('div');
+  el.className = cls;
+  el.textContent = text;
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = input.value.trim();
+  if (!msg) return;
+  addMessage(msg, 'user-message');
+  input.value = '';
+  addMessage('…', 'bot-message loading');
+
+  try {
+    const resp = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: msg})
+    });
+    const data = await resp.json();
+    // remove loading
+    const loading = document.querySelector('.loading');
+    if (loading) loading.remove();
+    addMessage(data.reply, 'bot-message');
+  } catch (err) {
+    const loading = document.querySelector('.loading');
+    if (loading) loading.remove();
+    addMessage('Sorry — something went wrong.', 'bot-message');
+  }
+});
+</script>
+</body>
+</html>
